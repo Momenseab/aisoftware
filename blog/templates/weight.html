@@ -1,0 +1,35 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+    <form method="POST"> 
+        {% csrf_token %} 
+
+        <h4 class="mt-2 mb-2">Please enter your weight:</h4>
+
+        <div class="input-group">
+
+            <input type="number" name="geeks_field" required="" id="id_geeks_field" class="form-control" placeholder="Enter your weight and select the unit" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append"><br>
+                <button type="submit" name="pounds-con" class="btn btn-outline-secondary">Pounds</button>
+                <button type="submit" name="kilos-con" class="btn btn-outline-secondary" >Kilograms</button>
+              </div><br>
+
+        </div>
+        {% if visible == True %}
+            <a class="btn btn-info btn-sm mt-4 mb-2">Weight in kilos: </a>
+            <p class="btn btn-outline-secondary btn-sm mt-4 mb-2" placeholder="Zero">{{ pounds }}</p><br>
+            <a class="btn btn-info btn-sm mt-4 mb-2">Weight in pounds: </a>
+            <p class="btn btn-outline-secondary btn-sm mt-4 mb-2" placeholder="Zero">{{ temp }}</p><br>
+        {% elif visible2 == True %}
+            <a class="btn btn-info btn-sm mt-4 mb-2">Weight in pounds: </a>
+            <p class="btn btn-outline-secondary btn-sm mt-4 mb-2" placeholder="Zero">{{ kilos }}</p><br>
+            <a class="btn btn-info btn-sm mt-4 mb-2">Weight in kilos: </a>
+            <p class="btn btn-outline-secondary btn-sm mt-4 mb-2" placeholder="Zero">{{ temp }}</p><br>
+        {% else %}
+            
+        {% endif %}
+    </form> 
+</div>
+{% endblock content %}
+
